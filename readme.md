@@ -12,7 +12,7 @@ CCIP stands for `Chainlink Cross-Chain Interoperability Protocol (CCIP)``. It pr
 ### What's the problem?
 - Blockchain by its nature is isolated, so it's hard to communicate with other blockchains or communicate natively with traditional systems to make external API calls ([Oracle problem](https://chain.link/education-hub/oracle-problem)).
 - no standard way to communicate between blockchains
-- the current solutions are not matured and inscure( given the huge amount of money lost in multi secuirity incidents)
+- the current solutions are not matured and insecure( given the huge amount of money lost in multi security incidents)
 - Without a blockchain interoperability protocol, Web2 systems and dApps would need to build separate in-house implementations for each cross-chain interaction that they want to use, which is a time-consuming, resource-intensive, and complex process.
 
 ## Why we need it?
@@ -34,7 +34,7 @@ Chainlink CCIP supports three main capabilities:
 ## Architecture
 ![Alt text](image.png)
 ### Terminology
-- `Interoperability`: he ability to exchange information between different systems or networks, even if they are incompatible. Shared concepts on different networks ensure that each party understands and trusts the exchanged information. 
+- `Interoperability`: The ability to exchange information between different systems or networks, even if they are incompatible. Shared concepts on different networks ensure that each party understands and trusts the exchanged information. 
 - `Finality`: The state of a transaction when it is no longer possible to revert it. Finality varies across different networks. Some networks offer instant finality and others require multiple confirmations. These time differences are set to ensure the security of CCIP and its users. Finality is crucial for token transfers because funds are locked and not reorganized once they are released onto the destination chain. In this scenario, finality ensures that funds on the destination chain are available only after they have been successfully committed on the source chain.
 - `Lane`: A Chainlink CCIP lane is a distinct pathway between a source and a destination blockchain. Lanes are **unidirectional**. For instance, Ethereum Sepolia => Polygon Mumbai and Polygon Mumbai => Ethereum Sepolia are two different lanes.
 - `DON`: Chainlink Decentralized Oracle Networks, or DONs, run Chainlink OCR2. The protocol runs in **rounds** during which an **observed data value might be agreed upon**. The output of this process results in a report which is attested to by a quorum of participants. The report is then transmitted on-chain by one of the participants. No single participant is responsible for transmitting on every round, and all of them will attempt to do so in a round-robin fashion until a transmission has taken place. In the context of CCIP, **a lane contains two OCR DON committees** that monitor transactions between a source and destination blockchain: the **Committing DON** and **Executing DON**. 
@@ -82,13 +82,13 @@ Chainlink CCIP supports three main capabilities:
          - Why? 
            - A token with a Proof Of Reserve (PoR) feed on a specific chain poses a challenge for the "Burn and Mint" method when applied to other chains because **it conflicts with the PoR feed**. For these tokens, "Lock and Mint" is the preferred approach.
    - `ARM contract`: The ARM contract maintains the list of ARM nodes' addresses allowed to bless/curse and holds the quorum logic for blessing a committed Merkle Root and cursing CCIP on a destination blockchain.
-     - There is one ARM contract for each supported destination chain. T
-     - he ARM contract maintains a group of nodes authorized to participate in the ARM blessing/cursing. 
+     - There is one ARM contract for each supported destination chain. 
+     - The ARM contract maintains a group of nodes authorized to participate in the ARM blessing/cursing. 
      - Each ARM node has five components: 
        1. an address for voting to curse, 
        2. an address for voting to bless, 
        3. an address for withdrawing a vote to curse, 
-       4. a curse weight, and
+       4. a curse weight
        5.  a blessing weight.
        -  The contract also maintains two thresholds to determine the quorum for blessing and cursing.
     -   There are two different voting logics depending on the mode:
@@ -166,8 +166,8 @@ Chainlink CCIP supports three main capabilities:
 
 For further details about CCIP supported networks and tokens, please refer to the [Chainlink documentation](https://docs.chain.link/ccip/supported-networks).
 ## How it works? a scenario from A to Z to better understand the flow
-
-
+![Alt text](CCIP_Diagram_04_v04.gif)
+ this part is well explained [here](https://andrej-rakic.gitbook.io/chainlink-ccip/ccip-masterclass/ccip-architecture-in-depth#processing-the-ccip-message)
 
 ## CCIP Best Practices
 
@@ -175,4 +175,7 @@ https://docs.chain.link/ccip/best-practices
 
 
 ## coding time :~)
+
+## master class 
+
 
